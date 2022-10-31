@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React from 'react'
 import { useState } from 'react'
 export default function Text_Reader(props) {
@@ -50,8 +51,8 @@ export default function Text_Reader(props) {
     }
     return (
         <>
-            <div className="container my-5 d-flex">
-                <div className="container-sm mt-4 boxshadow" style={{ width: '25%' }}>
+            <div className={`container my-5 d-flex ${innerWidth < 768 ? "flex-column" : "flex-row"}`}>
+                <div className="container-sm mt-4 boxshadow">
                     <h1 className='fs-3 mt-4 text-light'>Your Summary Information</h1>
                     <p className='mt-2 text-light fs-5'>{text.split(" ").filter((element) => { return element.length !== 0 }).length} Words</p>
                     <p className='mt-2 text-light fs-5'>{text.length} Charecters</p>
@@ -59,11 +60,11 @@ export default function Text_Reader(props) {
                     <p className='mt-2 pb-2 text-light search_result  fs-5'>Your search result {val} </p>
 
                 </div>
-                <div className='container-sm mt-4 texrt-cente mx-5' style={{ width: '50%' }}>
+                <div className={`container-sm mt-4 texrt-cente ${innerWidth < 768 ? "mx-0" : "mx-5"}`}>
                     <h1 className='text-light fs-1'>Text Editer !</h1>
                     <textarea className="form-control border1 my-2 fs-5"value={text} onChange={editable} id="exampleFormControlTextarea1 mytext" rows="9"></textarea>
                 </div>
-                <div className='container-sm mt-5 text-center boxshadow' style={{ width: '25%' }}>
+                <div className='container-sm mt-5 text-center boxshadow'>
                     <div className="boxshadow btn-group mt-5" role="group" aria-label="Basic mixed styles example">
                         <button disabled={text.length === 0} type="button" className="btn btnU btn-success mx-1" onClick={uppercase}>UPP</button><br />
                         <button disabled={text.length === 0} type="button" className="btn btnL btn-primary" onClick={lowercase}>LOW</button><br />
