@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-restricted-globals */
 import { ToastContainer, toast } from 'react-toastify';
@@ -66,11 +67,11 @@ export default function Text_Reader(props) {
     return (
         <>
             <ToastContainer />
-            <div className={`container ${width <= 767 ? "d-block" : "d-flex "}`}>
-                <div className="container w-75 min-width my-5">
+            <div className={`${width <= 768 ? "container-fuild d-block min-width" : "container d-flex "}`}>
+                <div className={`my-5 ${width <= 768 || width <= 1199 && width >=769 ? "container-fluid" : "container w-75"}`}>
                     <h1 className='text-light my-1 fs-1'>Text Editer !</h1>
                     <textarea className="form-control border1 my-2 fs-5" value={text} onChange={editable} id="exampleFormControlTextarea1 mytext" rows="9"></textarea>
-                    <div className='container text-center py-3'>
+                    <div className={`text-center py-3 ${width <= 768 ? "container-fluid": "container"}`}>
                         <div className="boxshadow mb-3 py-2 px-2 btn-group" role="group" aria-label="Basic mixed styles example">
                             <button disabled={text.length === 0} type="button" className="btn btnU btn-success mx-1" onClick={uppercase}>UPP</button><br />
                             <button disabled={text.length === 0} type="button" className="btn btnL btn-primary" onClick={lowercase}>LOW</button><br />
@@ -78,7 +79,7 @@ export default function Text_Reader(props) {
                             <button disabled={text.length === 0} type="button" className="btn btnS btn-light mx-1" onClick={ClearSpaces}>[ ]</button><br />
                             <button disabled={text.length === 0} type="button" className="btn btnC btn-danger mx-1 fw-bold" onClick={clear}>C</button><br />
                         </div>
-                        <div className="boxshadow btn-group mb-3 py-2 px-2 mx-3" role="group" aria-label="Basic mixed styles example">
+                        <div className="boxshadow btn-group mb-3 py-2 px-2" role="group" aria-label="Basic mixed styles example">
                             <input disabled={text.length === 0} type="text" className='mx-1 btn btnsearch' value={val} onChange={inputvalue} name="" id="searchinputval" placeholder='Search Text' /> <br />
                             <button disabled={text.length === 0} type="button" className="btn btnC btn-dark mx-1" onClick={searchcontent}><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                         </div>
@@ -87,18 +88,19 @@ export default function Text_Reader(props) {
                             <button disabled={text.length === 0} type="button" className="btn btnO btn-warning mx-1" onClick={sliceoneword}>Clear Word</button><br />
                         </div>
                     </div>
-                    <div className="container boxshadow my-3 min-width" >
+                    <div className={`boxshadow my-3 ${width <= 768 ? "container-fluid" : "container"}`} >
                         <h1 className='fs-3 text-light'>preview</h1>
                         <p className='mt-2 pb-2 text-light fs-5'>{text}</p>
                     </div>
                 </div>
-                <div className={`container mx-5 h-50 my-auto boxshadow ${width <= 767 ? "container-sm" : "w-25"}  ${width <= 991 && width >= 768 ? "w-50" : "container-sm"}`}>
-                    <h1 className='fs-3 mt-4 text-light'>Details</h1>
-                    <p className='mt-2 text-light fs-5'>{text.split(" ").filter((element) => { return element.length !== 0 }).length} Words</p>
-                    <p className='mt-2 text-light fs-5'>{text.length} Charecters</p>
-                    <p className='mt-2 text-light fs-5'>{0.008 * text.split(" ").length - 0.008} Minutes in read</p>
-                    <p className='mt-2 pb-2 text-light search_result  fs-5'>Your search result {val} </p>
-
+                <div className={`position-relative ${width <= 768 ? "w-100" : "w-25"}  ${width <= 768 ? "container-fluid" : "container mx-5"}`}>
+                    <div className={`px-2 boxshadow ${width <= 768 ? "w-100" : "sticky w-25 container mx-5"}`}>
+                        <h1 className='fs-3 mt-4 text-light'>Details</h1>
+                        <p className='mt-2 text-light fs-5'>{text.split(" ").filter((element) => { return element.length !== 0 }).length} Words</p>
+                        <p className='mt-2 text-light fs-5'>{text.length} Charecters</p>
+                        <p className='mt-2 text-light fs-5'>{0.008 * text.split(" ").length - 0.008} Minutes in read</p>
+                        <p className='mt-2 pb-2 text-light search_result  fs-5'>Your search result {val} </p>
+                    </div>
                 </div>
             </div>
         </>
