@@ -66,25 +66,25 @@ export default function Text_Reader(props) {
         <>
             <ToastContainer />
             <div className="container min-width flex flex-col lg:flex-row">
-                <div className="my-5 w-75 container mx-10 m-auto">
+                <div className="my-5 w-full sm:w-3/4 container md:mx-10 m-auto">
                     <h1 className='text-light my-1 fs-1'>Text Editer !</h1>
                     <textarea className="form-control border1 my-2 fs-5" value={text} onChange={editable} id="exampleFormControlTextarea1 mytext" rows="9"></textarea>
                     <div className="text-center py-3 container">
                         <div className="boxshadow mb-3 py-2 sm:px-2 btn-group" role="group" aria-label="Basic mixed styles example">
                             <button disabled={text.length === 0} type="button" className="btn btnU btn-success mx-1" onClick={uppercase}>UPP</button><br />
-                            <button disabled={text.length === 0} type="button" className="btn btnL btn-primary" onClick={lowercase}>LOW</button><br />
+                            <button disabled={text.length === 0} type="button" className="btn btnL btn-primary mx-1" onClick={lowercase}>LOW</button><br />
+                            <button disabled={text.length === 0} type="button" className="btn btnO btn-info mx-1" onClick={capitalization}>Capital</button> <br />
+                            <button disabled={text.length === 0} type="button" className="btn btnC btn-danger mx-1 fw-bold" onClick={clear}>C</button> <br />
+                        </div>
+                        <div className="boxshadow mb-3 py-2 sm:px-2 btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button disabled={text.length === 0} type="button" className="btn btnS btn-light mx-1" onClick={ClearSpaces}>[]</button> <br />
                             <button disabled={text.length === 0} type="button" className="btn btnclipbord mx-1" onClick={copyclipbord}><i className="fa-regular fa-copy"></i></button><br />
-                            <button disabled={text.length === 0} type="button" className="btn btnS btn-light mx-1" onClick={ClearSpaces}>[ ]</button><br />
-                            <button disabled={text.length === 0} type="button" className="btn btnC btn-danger mx-1 fw-bold" onClick={clear}>C</button><br />
+                            <button disabled={text.length === 0} type="button" className="btn btnO btn-warning mx-1" onClick={sliceoneword}>back</button><br />
+                            <button disabled={text.length === 0} type="button" className="btn mx-1 reverse bg-secondary" onClick={ReverseText}>Reverse</button>
                         </div>
                         <div className="boxshadow btn-group mb-3 py-2 sm:px-2" role="group" aria-label="Basic mixed styles example">
-                            <input disabled={text.length === 0} type="text" className='mx-1 btn btnsearch' value={val} onChange={inputvalue} name="" id="searchinputval" placeholder='Search Text' /> <br />
-                            <button disabled={text.length === 0} type="button" className="btn btnC btn-dark mx-1" onClick={searchcontent}><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                        <div className="boxshadow btn-group py-2 sm:px-2 " role="group" aria-label="Basic mixed styles example">
-                            <button disabled={text.length === 0} type="button" className="btn mx-1 reverse bg-secondary" onClick={ReverseText}>Reverse Text</button><br />
-                            <button disabled={text.length === 0} type="button" className="btn btnO btn-warning mx-1" onClick={sliceoneword}>Clear Word</button><br />
-                            <button disabled={text.length === 0} type="button" className="btn btnO btn-warning mx-1" onClick={capitalization}>Fist Capital</button>
+                            <input disabled={text.length === 0} type="text" className='btn btnsearch' value={val} onChange={inputvalue} name="" id="searchinputval" placeholder='Search Text' /> <br />
+                            <button disabled={text.length === 0} type="button" className="btn btnC btn-dark" onClick={searchcontent}><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
                     <div className="my-3 boxshadow container ">
@@ -93,7 +93,7 @@ export default function Text_Reader(props) {
                     </div>
                 </div>
                 <div className=" position-relativef flex justify-center lg:mx-16 w-full lg:w-1/4 container ">
-                    <div className="px-2 lg:mx-16 w-3/4 lg:w-1/4 lg:sticky2 boxshadow ">
+                    <div className="px-2 lg:mx-16 w-full sm:w-3/4 lg:w-1/4 lg:sticky2 boxshadow ">
                         <h1 className='fs-3 mt-4 text-light'>Details</h1>
                         <p className='mt-2 text-light fs-5'>{text.split(" ").filter((element) => { return element.length !== 0 }).length} Words</p>
                         <p className='mt-2 text-light fs-5'>{text.length} Charecters</p>
