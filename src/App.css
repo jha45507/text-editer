@@ -3,13 +3,9 @@ body {
 }
 
 .min-width{
-  min-width: 320px;
+  min-width: 450px;
 }
-.sticky{
-  position: fixed;
-  top: 185px;
-  right: 0px;
-}
+
 .mynav {
   background-color: rgb(80 80 80);
   border-radius: 0px;
